@@ -1,7 +1,7 @@
 // My Personal Website Portfolio
 
 const me = {
-
+const me = {
     name: "Your Name",
     superpowers: ["Coding", "Memes", "Coffee-fueled creativity"],
     currentStatus: "Deploying awesomeness to the web 🌐",
