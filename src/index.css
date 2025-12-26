@@ -1,0 +1,338 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 220 15% 15%;
+
+    --card: 0 0% 99%;
+    --card-foreground: 220 15% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 15% 15%;
+
+    --primary: 230 85% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 10% 96%;
+    --secondary-foreground: 220 15% 25%;
+
+    --muted: 220 10% 97%;
+    --muted-foreground: 220 10% 45%;
+
+    --accent: 280 75% 55%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 15% 92%;
+    --input: 220 15% 92%;
+    --ring: 230 85% 60%;
+
+    --radius: 1rem;
+
+    /* Minimal Modern Palette */
+    --glow-primary: 0 0 60px hsl(230 85% 60% / 0.12);
+    --glow-accent: 0 0 60px hsl(280 75% 55% / 0.12);
+    --glow-strong: 0 0 80px hsl(230 85% 60% / 0.2);
+    
+    --gradient-primary: linear-gradient(135deg, hsl(230 85% 60%) 0%, hsl(280 75% 55%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(220 10% 98%) 100%);
+    --gradient-hero: linear-gradient(180deg, hsl(230 30% 98%) 0%, hsl(0 0% 100%) 100%);
+    --gradient-text: linear-gradient(135deg, hsl(230 85% 55%) 0%, hsl(280 75% 50%) 100%);
+    --gradient-subtle: linear-gradient(135deg, hsl(230 20% 98%) 0%, hsl(280 20% 98%) 100%);
+    --gradient-mesh: radial-gradient(at 40% 20%, hsl(230 85% 60% / 0.08) 0px, transparent 50%),
+                     radial-gradient(at 80% 0%, hsl(280 75% 55% / 0.06) 0px, transparent 50%),
+                     radial-gradient(at 0% 50%, hsl(230 85% 60% / 0.05) 0px, transparent 50%);
+  }
+
+  .dark {
+    --background: 222 47% 5%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 8%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 7%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 230 85% 65%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 20% 15%;
+    --secondary-foreground: 210 30% 90%;
+
+    --muted: 220 20% 12%;
+    --muted-foreground: 220 10% 60%;
+
+    --accent: 280 75% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 20% 18%;
+    --input: 220 20% 18%;
+    --ring: 230 85% 65%;
+
+    --glow-primary: 0 0 60px hsl(230 85% 65% / 0.2);
+    --glow-accent: 0 0 60px hsl(280 75% 60% / 0.2);
+    --glow-strong: 0 0 80px hsl(230 85% 65% / 0.3);
+    
+    --gradient-primary: linear-gradient(135deg, hsl(230 85% 65%) 0%, hsl(280 75% 60%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(222 47% 8%) 0%, hsl(222 47% 10%) 100%);
+    --gradient-hero: linear-gradient(180deg, hsl(222 47% 6%) 0%, hsl(222 47% 5%) 100%);
+    --gradient-text: linear-gradient(135deg, hsl(230 85% 70%) 0%, hsl(280 75% 65%) 100%);
+    --gradient-subtle: linear-gradient(135deg, hsl(230 30% 10%) 0%, hsl(280 30% 10%) 100%);
+    --gradient-mesh: radial-gradient(at 40% 20%, hsl(230 85% 65% / 0.15) 0px, transparent 50%),
+                     radial-gradient(at 80% 0%, hsl(280 75% 60% / 0.1) 0px, transparent 50%),
+                     radial-gradient(at 0% 50%, hsl(230 85% 65% / 0.08) 0px, transparent 50%);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-xl border border-border/60 rounded-2xl;
+    box-shadow: 0 4px 30px hsl(220 15% 15% / 0.03);
+  }
+
+  .glass-card:hover {
+    box-shadow: 0 8px 40px hsl(230 85% 60% / 0.08);
+  }
+
+  .glow-box {
+    box-shadow: var(--glow-primary);
+    transition: box-shadow 0.4s ease;
+  }
+
+  .glow-box:hover {
+    box-shadow: var(--glow-strong);
+  }
+
+  .glow-text {
+    text-shadow: 0 0 40px hsl(230 85% 60% / 0.2);
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-text);
+  }
+
+  .nav-link {
+    @apply relative text-muted-foreground hover:text-foreground transition-colors duration-300;
+  }
+
+  .nav-link::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 rounded-full;
+  }
+
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+
+  .section-title {
+    @apply text-4xl md:text-5xl font-bold mb-6 tracking-tight;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  .card-hover {
+    @apply transition-all duration-500;
+  }
+
+  .card-hover:hover {
+    @apply -translate-y-2;
+    box-shadow: 0 20px 50px hsl(230 85% 60% / 0.1);
+  }
+
+  .skill-tag {
+    @apply px-4 py-2 text-sm font-medium bg-muted/50 text-muted-foreground rounded-full transition-all duration-300 border border-transparent;
+  }
+
+  .skill-tag:hover {
+    @apply bg-primary/10 text-primary border-primary/20;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-8 py-4 text-primary-foreground rounded-2xl font-semibold text-lg;
+    background-image: var(--gradient-primary);
+    box-shadow: 0 8px 30px hsl(230 85% 60% / 0.25);
+    transition: all 0.4s ease;
+  }
+
+  .btn-primary:hover {
+    box-shadow: 0 12px 40px hsl(230 85% 60% / 0.35);
+    transform: translateY(-3px);
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-8 py-4 bg-card text-foreground rounded-2xl font-semibold text-lg border border-border transition-all duration-300;
+  }
+
+  .btn-secondary:hover {
+    @apply border-primary/40 bg-primary/5;
+  }
+
+  .mesh-bg {
+    background-image: var(--gradient-mesh);
+  }
+
+  .floating {
+    animation: floating 6s ease-in-out infinite;
+  }
+
+  .floating-delayed {
+    animation: floating 6s ease-in-out infinite;
+    animation-delay: 3s;
+  }
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 4s ease-in-out infinite;
+  }
+
+  .animate-gradient {
+    animation: gradient 8s ease infinite;
+    background-size: 200% 200%;
+  }
+
+  .animate-spin-slow {
+    animation: spin 20s linear infinite;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes floating {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(3deg);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 40px hsl(230 85% 60% / 0.1);
+  }
+  50% {
+    box-shadow: 0 0 70px hsl(230 85% 60% / 0.2);
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+.animate-blink {
+  animation: blink 1s infinite;
+}
+
+/* Scroll reveal animations */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.scroll-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scroll-reveal-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.scroll-reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.scroll-reveal-right {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.scroll-reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.scroll-reveal-scale {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.scroll-reveal-scale.visible {
+  opacity: 1;
+  transform: scale(1);
+}
